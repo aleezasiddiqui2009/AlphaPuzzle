@@ -4,6 +4,7 @@ from agents.value_network import ValueNetwork
 from game.game import Game
 from train.trainer import Trainer
 
+
 def main():
     print("Starting AlphaPuzzle...")
 
@@ -24,7 +25,14 @@ def main():
     print("Training Value Network...")
     trainer.train(episodes=1000)
 
-    print("Training Complete!")
+    # 6. After training: Evaluate a puzzle
+    print("Evaluating with trained Value Network...")
+    sample_state = env.reset()
+    value = value_network.evaluate(sample_state)
+    print("Sample state value:", value)
+
+    print("AlphaPuzzle completed.")
+
 
 if __name__ == "__main__":
     main()
